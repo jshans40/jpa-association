@@ -45,6 +45,7 @@ public class EntityRowMapper<T> implements RowMapper<T> {
     private void setField(Field field, Object object, ResultSet resultSet) {
         try {
             field.setAccessible(true);
+
             field.set(object, resultSet.getObject(new EntityColumnName(field).getValue()));
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
