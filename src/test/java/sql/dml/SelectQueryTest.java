@@ -34,10 +34,7 @@ class SelectQueryTest {
     @Test
     void Join_조회_쿼리() {
         SelectQuery selectQuery = SelectQuery.getInstance();
-        System.out.println("selectQuery.bu = " + selectQuery.findById(Order.class, 1L));
-
-//        assertThat(selectQuery.findById(Order.class, 1L)).isEqualTo("SELECT orders.id, orders.orderNumber, order_items.id, order_items.product, order_items.quantity, order_items.order_id FROM orders orders LEFT JOIN order_items ON id = order_id  WHERE orders.id = 1");
-
+        assertThat(selectQuery.findById(Order.class, 1L)).isEqualTo("SELECT orders.id, orders.orderNumber, order_items.id, order_items.product, order_items.quantity, order_items.order_id FROM orders orders LEFT JOIN order_items ON orders.id = order_items.order_id  WHERE orders.id = 1");
     }
 
 }
